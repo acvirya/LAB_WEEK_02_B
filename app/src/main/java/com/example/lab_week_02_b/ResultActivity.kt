@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import android.widget.TextView
 import android.content.Intent
+import android.widget.Button
 
 
 class ResultActivity : AppCompatActivity() {
@@ -14,6 +15,9 @@ class ResultActivity : AppCompatActivity() {
         private const val COLOR_KEY = "COLOR_KEY"
         private const val ERROR_KEY = "ERROR_KEY"
     }
+
+    private val backButton: Button
+        get() = findViewById(R.id.back_button)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,5 +42,11 @@ class ResultActivity : AppCompatActivity() {
             resultMessage.text = getString(R.string.color_code_result_message,
                 colorCode?.uppercase())
         }
+
+        backButton.setOnClickListener{
+            setResult(RESULT_OK)
+            finish()
+        }
+
     }
 }
